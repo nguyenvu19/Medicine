@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Blockchain_Thuoc.Models.NguoiDung>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h4 class="mt-5">Quản lý người dùng</h4>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                @if (ViewBag.Msg != null)
+                {
+                        <div class="alert alert-danger">
+                            <strong>Không thể xóa</strong>
+                        </div>
+                }
+            <button type="button" class="btn btn-success">
+                @Html.ActionLink("Thêm mới", "Create", new { }, new { @style = "color:white;" })
+            </button>
+            </div>
+
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TaiKhoan)
+                            </th>
+
+                         @*   <th>
+                                @Html.DisplayNameFor(model => model.MatKhau)
+                            </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.MoTa)
+                            <th>
+                                @Html.DisplayNameFor(model => model.VaiTro.VaiTro1)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TaiKhoan)
+                            </td>
+                         @*   <td>
+                                @Html.DisplayFor(modelItem => item.MatKhau)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MoTa)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VaiTro.VaiTro1)
+                            </td>
+                            <td style="width : 240px !important">
+                                <button class="btn btn-success mr-2">
+                                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaNguoiDung }, new { @style = "color:white;" })
+                                </button>
+                                <button class="btn btn-danger">
+                                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaNguoiDung }, new { @style = "color:white;" })
+                                </button>
+                            </td>
+                        </tr>
+                            
+                        }
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+
+            CKEDITOR.replace("editor");
+
+    </script>
+    <script>
+            var dodai = document.getElementById("dodai").value;
+
+            for (var i = 1; i <= dodai; i++) {
+                var name = "comment" + i
+                CKEDITOR.replace(name);
+            }
+    </script>
+</main>
+

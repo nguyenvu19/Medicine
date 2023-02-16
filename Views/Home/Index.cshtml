@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="hero-slider-section">
+    <!-- Slider main container -->
+    <div class="hero-slider-active swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Start Hero Single Slider Item -->
+            <!-- Start Hero Single Slider Item -->
+            <div class="hero-single-slider-item swiper-slide">
+                <!-- Hero Slider Image -->
+                <div class="hero-slider-bg">
+                    <img src="https://i.ytimg.com/vi/V_9ImbtTokY/maxresdefault.jpg" alt="">
+                </div>
+                <!-- Hero Slider Content -->
+
+            </div> <!-- End Hero Single Slider Item -->
+            <div class="hero-single-slider-item swiper-slide">
+                <!-- Hero Slider Image -->
+                <div class="hero-slider-bg">
+                    <img src="https://thumbs.dreamstime.com/b/blockchain-cryptocurrency-outline-blue-horizontal-banner-blockchain-cryptocurrency-outline-blue-horizontal-banner-vector-bright-135991197.jpg" alt="">
+                </div>
+                <!-- Hero Slider Content -->
+
+            </div> <!-- End Hero Single Slider Item -->
+        </div>
+
+        <!-- If we need pagination -->
+        <div class="swiper-pagination active-color-pink"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev d-none d-lg-block"></div>
+        <div class="swiper-button-next d-none d-lg-block"></div>
+    </div>
+</div>
+<!-- End Hero Slider Section-->
+<!-- Start Product Default Slider Section -->
+@Html.Action("SanPhamPartialView", "Home")

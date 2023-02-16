@@ -1,0 +1,66 @@
+﻿
+<div class="product-default-slider-section mt-5 section-fluid">
+    <!-- Start Section Content Text Area -->
+    <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-content-gap">
+                        <div class="secton-content">
+                            <h3 class="section-title">Sản phẩm</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start Section Content Text Area -->
+    <div class="product-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-slider-default-2rows default-slider-nav-arrow">
+                        <!-- Slider main container -->
+                        <div class="swiper-container product-default-slider-4grid-2row">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                @foreach (var item in Model)
+                                {
+                                    <!-- Start Product Default Single Item -->
+                                    <div class="product-default-single-item product-color--pink swiper-slide">
+                                        <div class="image-box">
+                                            <a href="@Url.Action("XemChiTietSP", new {id=item.MaSanPham })" class="image-link">
+                                                <img src=@item.HinhAnh alt="" style="height : 350px !important">
+                                            </a>
+                                            <div class="action-link">
+                                                <div class="action-link-left">
+                                                    <a href="@Url.Action("XemChiTietSP", new {id=item.MaSanPham })">Xem chi tiết</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="content-left">
+                                                <h6 class="title"><a href="@Url.Action("XemChiTietSP", new {id=item.MaSanPham })">@item.TenSanPham</a></h6>
+
+                                            </div>
+                                            <div class="content-right">
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- End Product Default Single Item -->
+                                }
+                                </div>
+                        </div>
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,200 @@
+﻿@model IEnumerable<Blockchain_Thuoc.Models.QuyTrinh>
+@*@using Blockchain_Thuoc.Models
+    @model QuyTrinh*@
+@{
+    ViewBag.Title = "XemChiTietSP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="product-details-section mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-6">
+                <div class="product-details-gallery-area" data-aos="fade-up" data-aos-delay="0">
+                    <!-- Start Large Image -->
+                    <div class="product-large-image product-large-image-horaizontal swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
+                                <img src=@ViewBag.AnhSP alt="">
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- End Large Image -->
+                    <!-- Start Thumbnail Image -->
+                    <div class="product-image-thumb product-image-thumb-horizontal swiper-container pos-relative mt-5">
+                        <div class="swiper-wrapper">
+                        </div>
+                    </div>
+                    <!-- End Thumbnail Image -->
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-6">
+                <div class="product-details-content-area product-details--golden" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Start  Product Details Text Area-->
+                    <div class="product-details-text">
+                        <h4 class="title">
+                            @ViewBag.TenSP (@if (@ViewBag.TrangThaiSP == 1)
+                                                {
+                                                   
+                            <span>Đã kiểm định</span>
+                                                  
+                                                }
+                                                else
+                                                {
+                                                    
+                        <span>Chưa kiểm định đầy đủ</span>
+                                                   
+                                                })
+                        </h4>
+                        <div class="d-flex align-items-center mt-5">
+
+                        </div>
+                        <p>@Html.Raw(ViewBag.MoTa)</p>
+                    </div> <!-- End  Product Details Text Area-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End Product Details Section -->
+<!-- Start Product Content Tab Section -->
+<!-- Start Product Default Slider Section -->
+<div class="product-default-slider-section section-fluid">
+    <!-- Start Section Content Text Area -->
+    <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-content-gap">
+                        <div class="secton-content">
+                            <h3 class="section-title">Danh sách qui trình kiểm định</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start Section Content Text Area -->
+    <div class="product-wrapper" data-aos="fade-up" data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-slider-default-1row default-slider-nav-arrow">
+                        <!-- Slider main container -->
+                        <div class="swiper-container product-default-slider-4grid-1row">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <table class="table table-bordered table-hover">
+                                    <tr>
+                                        <th>
+                                            @*@Html.DisplayNameFor(model => model.SanPham.TenSanPham)*@
+                                            STT
+                                        </th>
+                                        <th>
+                                            @*@Html.DisplayNameFor(model => model.TenQuyTrinh)*@
+                                            Tên quy trình
+                                        </th>
+
+                                        <th>
+                                            @*@Html.DisplayNameFor(model => model.LoHang.TenLoHang)*@
+                                            Tên lô hàng
+                                        </th>
+                                        @*<th>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </th>*@
+                                        @*<th>
+                @Html.DisplayNameFor(model => model.ChuKi)
+            </th>*@
+                                        <th style="width : 100px">
+                                            @*@Html.DisplayNameFor(model => model.NgayKy)*@
+                                            Ngày SX lô hàng
+                                        </th>
+                                        <th>
+                                            @*@Html.DisplayNameFor(model => model.TepTinChungThuc)*@
+                                            Tệp tin
+                                        </th>
+                                        <th>
+                                            Cơ quan kiểm định
+                                        </th>
+                                        <th>
+                                            @*@Html.DisplayNameFor(model => model.TrangThai)*@
+                                            Trạng thái
+                                        </th>
+
+                                        @*<th></th>*@
+                                    </tr>
+                                    @{var i = 0;}
+                                    @foreach (var item in Model)
+                                    {
+                                        i++;
+                                        <tr>
+
+                                            <td>
+                                                @i
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TenQuyTrinh)
+                                            </td>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LoHang.TenLoHang)
+                                            </td>
+
+                                            @*<td>
+                    @Html.DisplayFor(modelItem => item.MoTa)
+                </td>*@
+                                            @*<td>
+                    @Html.DisplayFor(modelItem => item.ChuKi)
+                </td>*@
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LoHang.NgaySanXuat)
+                                            </td>
+                                            <td>
+                                                <img src=@item.TepTinChungThuc class="img-responsive" alt="" width="400" height="400" />
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NguoiDung.MoTa)
+                                            </td>
+                                            <td>
+                                                @{
+                                                    if (item.TrangThai == 0)
+                                                    {
+                                                        <div style="color:red"> <strong>Chưa xác thực</strong> </div>
+                                                    }
+                                                    else if (item.TrangThai == 1)
+                                                    {
+                                                        <div style="color:slateblue"><strong>Đã xác thực</strong></div>
+
+                                                    }
+                                                    else if (item.TrangThai == 2)
+                                                    {
+                                                        <div style="color:red"><strong>Đã bị thay đổi</strong></div>
+
+                                                    }
+                                                }
+                                            </td>
+
+                                            @*<td>
+                    <button class="btn btn-primary">
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaQuyTrinh }, new { @style = "color:white;" })
+                    </button>
+                </td>*@
+
+                                        </tr>
+
+
+                                    }
+                                </table>
+
+
+                            </div>
+                        </div>
+                        <!-- If we need navigation buttons -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

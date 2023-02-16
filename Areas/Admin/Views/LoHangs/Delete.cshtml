@@ -1,0 +1,53 @@
+﻿@model Blockchain_Thuoc.Models.LoHang
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+<main>
+    <div class="container-fluid px-4">
+        <h4 class="mt-5">Xóa</h4>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TenLoHang)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TenLoHang)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NgaySanXuat)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NgaySanXuat)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GhiChu)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.GhiChu)
+                    </dd>
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Xóa" class="btn btn-danger" />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</main>
+

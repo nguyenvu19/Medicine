@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Blockchain_Thuoc.Models.QuyTrinh>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutCoquan.cshtml";
+    var userAdmin = Session["userAdmin"] as Blockchain_Thuoc.Models.NguoiDung;
+
+}
+<main>
+    <div class="container-fluid px-4">
+        <h4 class="mt-5">Tất cả quy trình</h4>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                
+            </div>
+
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>
+                               
+                                Tên sản phẩm
+                            </th>
+                            <th>
+                               
+                                Tên quy trình
+                            </th>
+
+                            <th>
+                                
+                                Tên lô hàng
+                            </th>
+                            
+                            <th>
+                                
+                                Ngày SX lô hàng
+                            </th>
+                           
+                            <th>
+                                
+                                Trạng thái
+                            </th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            if (item.MaNguoiDung == userAdmin.MaNguoiDung)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SanPham.TenSanPham)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenQuyTrinh)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LoHang.TenLoHang)
+                                    </td>
+                           
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LoHang.NgaySanXuat)
+                                    </td>
+                           
+                                    <td>
+                                        @{
+                                            if (item.TrangThai == 0)
+                                            {
+                                                <div style="color:red">Đang chờ ký</div>
+                                            }
+                                            else if (item.TrangThai == 1)
+                                            {
+                                                <div style="color:slateblue">Đã ký</div>
+
+                                            }
+                                            else if (item.TrangThai == 2)
+                                            {
+                                                <div style="color:sandybrown">Thông tin quy trình bị thay đổi</div>
+                                            }
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <button class="btn btn-primary">
+                                            @Html.ActionLink("Chi tiết", "Details", new { id = item.MaQuyTrinh }, new { @style = "color:white;" })
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+                            }
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+
+            CKEDITOR.replace("editor");
+
+    </script>
+    <script>
+            var dodai = document.getElementById("dodai").value;
+
+            for (var i = 1; i <= dodai; i++) {
+                var name = "comment" + i
+                CKEDITOR.replace(name);
+            }
+    </script>
+</main>
+

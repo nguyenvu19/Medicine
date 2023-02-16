@@ -1,0 +1,64 @@
+﻿@model Blockchain_Thuoc.Models.QuyTrinh
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_layoutAdmin.cshtml";
+}
+<main>
+    <div class="container-fluid px-4">
+        <h4 class="mt-5">Xóa quy trình</h4>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LoHang.TenLoHang)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LoHang.TenLoHang)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NguoiDung.TaiKhoan)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NguoiDung.TaiKhoan)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SanPham.TenSanPham)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SanPham.TenSanPham)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TenQuyTrinh)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TenQuyTrinh)
+                    </dd>
+
+                    
+
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-danger" /> 
+                       
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</main>
+
